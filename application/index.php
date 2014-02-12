@@ -44,15 +44,10 @@ h1, h2, h3 {
 </style>
 
 <?php
-// Include our Marvel API Interface class
-include 'lib/MarvelAPIInterface.php';
-
-// Construct a new instance of the Marvel API Interface
-$API = new MarvelAPIInterface('51053776bff9f684b08a41a47734167b', '830fb729ea7061d094a89c5e6b28eeaccf5fc9f9', 60 * 60 * 24);
+include 'config.php';
 
 // Get the full character list and put it into an array
 $data = json_decode($API->getCharacterList());
-
 
 foreach($data->data->results as $character)
 {

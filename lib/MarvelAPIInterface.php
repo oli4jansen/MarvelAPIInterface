@@ -63,12 +63,16 @@ class MarvelAPIInterface
 	*	Public functions
 	*/
 
-	public function __construct($publicKey, $privateKey, $cacheExpireTime)
+	public function __construct($publicKey, $privateKey)
 	{
 		$this->_publicKey = $publicKey;
 		$this->_privateKey = $privateKey;
+	}
 
-		$this->_cacheExpireTime = $cacheExpireTime;
+	public function configureCache($folder, $time)
+	{
+		$this->_cacheFolder = $folder;
+		$this->_cacheExpireTime = $time;
 	}
 
 	public function getCharacterList($page=0)
