@@ -16,7 +16,7 @@ foreach($data->data->results as $character)
 	<div class="character">
 
 		<img src="<?php echo $character->thumbnail->path.'.'.$character->thumbnail->extension; ?>"><div class="content">
-			<h2><?php echo $character->name; ?></h2>
+			<h2><a href="character.php?id=<?php echo $character->id; ?>"><?php echo $character->name; ?></a></h2>
 			<p><?php echo $character->description; ?></p>
 		</div>
 

@@ -1,20 +1,12 @@
 <?php
 class MarvelAPIInterface
 {
-	/*
-	*	Variabelen
-	*/
-
 	private $_publicKey;
 	private $_privateKey;
 
 	private $_cacheExpireTime = 0;
 	private $_cacheFolder = 'cache/';
 	private $_cacheFileExtention = '.json';
-
-	/*
-	*	Private functies
-	*/
 
 	private function makeCall($url, $data, $fileName)
 	{
@@ -50,7 +42,7 @@ class MarvelAPIInterface
 		return FALSE;
 	}
 
-	private function parseDataToUrl($url, $data='')
+	private function parseDataToUrl($url, $data=Array())
 	{
 		$fullData = Array(
 			'ts' => time(),
@@ -62,9 +54,6 @@ class MarvelAPIInterface
 		return sprintf("%s?%s", $url, http_build_query($fullData));
 	}
 
-	/*
-	*	Public functions
-	*/
 
 	public function __construct($publicKey, $privateKey)
 	{
@@ -82,5 +71,10 @@ class MarvelAPIInterface
 	{
 		$data = Array('offset' => $pageNumber*$resultsPerPage, 'limit' => $resultsPerPage);
 		return $this->makeCall('http://gateway.marvel.com:80/v1/public/characters', $data, 'characters-'.$pageNumber.'x'.$resultsPerPage);
+	}
+
+	public function getCharacter($id)
+	{
+		return $this->makeCall('http://gateway.marvel.com:80/v1/public/characters/'.$id, Array(), 'character-'.$id);
 	}
 }
