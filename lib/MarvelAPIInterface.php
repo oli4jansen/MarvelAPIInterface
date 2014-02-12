@@ -67,14 +67,23 @@ class MarvelAPIInterface
 		$this->_cacheExpireTime = $time;
 	}
 
+	// Get the full list of Marvel characters
 	public function getCharacterList($pageNumber=0, $resultsPerPage=20)
 	{
 		$data = Array('offset' => $pageNumber*$resultsPerPage, 'limit' => $resultsPerPage);
 		return $this->makeCall('http://gateway.marvel.com:80/v1/public/characters', $data, 'characters-'.$pageNumber.'x'.$resultsPerPage);
 	}
 
+	// Get information about a specific Marvel character
 	public function getCharacter($id)
 	{
 		return $this->makeCall('http://gateway.marvel.com:80/v1/public/characters/'.$id, Array(), 'character-'.$id);
 	}
+
+	// Get information about a specific Marvel comic
+	public function getComic($id)
+	{
+		return $this->makeCall('http://gateway.marvel.com:80/v1/public/comics/'.$id, Array(), 'comic-'.$id);
+	}
+
 }

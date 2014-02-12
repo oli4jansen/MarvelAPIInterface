@@ -7,8 +7,9 @@
 }
 body {
 	background-color: #fff;
-	padding: 60px 0 0;
+	padding: 60px 50px 0;
 	margin: 0;
+	color: #333;
 }
 h1, h2, h3 {
 	padding: 0;
@@ -36,16 +37,15 @@ h1, h2, h3 {
 .header-menu {
 	display: block;
 	list-style: none;
-	padding: 10px 0 0;
+	padding: 10px 10px 0;
 	margin: 0;
-	margin-left: -375px;
 	background-color: #fff;
 	border-bottom: 1px solid #aaa;
 	position: fixed;
 	text-align: right;
 	top: 0;
-	left: 50%;
-	width: 750px;
+	left: 0;
+	width: 100%;
 }
 	.header-menu li {
 		display: inline-block;
@@ -84,29 +84,3 @@ h1, h2, h3 {
 	display: block;
 	text-align: center;
 }
-
-.character {
-	display: block;
-	padding: 0;
-	margin: 20px auto;
-	width: 700px;
-
-	color: #333;
-}
-	.character img {
-		display: inline-block;
-		vertical-align: top;
-		width: 20%;
-		padding: 0;
-		margin: 0;
-	}
-	.character .content {
-		display: inline-block;
-		vertical-align: top;
-		width: 80%;
-		margin: 0;
-		padding: 15px;
-	}
-		.character .content h2 {
-			text-transform: uppercase;
-		}

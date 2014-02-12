@@ -7,24 +7,30 @@ $page = 0;
 if(isset($_GET['page']) && is_numeric($_GET['page'])) $page = $_GET['page'];
 
 // Get the full character list and put it into an array
-$data = json_decode($API->getCharacterList($page, 5));
+$data = json_decode($API->getCharacterList($page, 50));
 
+?>
+<table>
+	<tr>
+		<td><b>Thumbnail</b></td>
+		<td><b>Name</b></td>
+		<td><b>Description</b></td>
+	</tr>
+<?php
 foreach($data->data->results as $character)
 {
 	?>
-
-	<div class="character">
-
-		<img src="<?php echo $character->thumbnail->path.'.'.$character->thumbnail->extension; ?>"><div class="content">
-			<h2><a href="character.php?id=<?php echo $character->id; ?>"><?php echo $character->name; ?></a></h2>
-			<p><?php echo $character->description; ?></p>
-		</div>
-
-	</div>
+	<tr>
+		<td><img src="<?php echo $character->thumbnail->path.'.'.$character->thumbnail->extension; ?>" height="150" valign="top"></td>
+		<td>
+			<a href="character.php?id=<?php echo $character->id; ?>"><?php echo $character->name; ?></a>
+		</td>
+		<td><?php echo $character->description; ?></td>
+	</tr>
 	<?php
-//	print_r($character);
 }
 ?>
+</table>
 <div class="pagination">
 <?php
 if($page>0)

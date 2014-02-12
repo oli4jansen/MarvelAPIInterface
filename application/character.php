@@ -15,14 +15,24 @@ if($id==0)
 else
 {
 
-	// Get the full character list and put it into an array
+	// Get the character information and put it into an array
 	$data = json_decode($API->getCharacter($id));
 	?>
-	<pre>
+
 	<?php
 	foreach($data->data->results as $character)
 	{
-		print_r($character);
+		?>
+		<img src="<?php echo $character->thumbnail->path.'.'.$character->thumbnail->extension; ?>" height="250">
+		<h2><?php echo $character->name; ?></h2>
+		<p><?php echo $character->description; ?></p>
+
+		Totaal aantal comics met <?php echo $character->name; ?>: <?php echo $character->comics->available; ?>.<br>
+		<?php
+		foreach($character->comics->items as $comic)
+		{
+			?><a href="comic.php?id=<?php echo end(explode('/', $comic->resourceURI)); ?>" class="comic"><?php echo $comic->name; ?></a><br><?php
+		}
 	}
 }
 ?>
