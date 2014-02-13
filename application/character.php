@@ -23,7 +23,7 @@ else
 	foreach($data->data->results as $character)
 	{
 		?>
-		<img src="<?php echo $character->thumbnail->path.'.'.$character->thumbnail->extension; ?>" height="250">
+		<img src="<?php echo $character->thumbnail->path.'.'.$character->thumbnail->extension; ?>" width="350">
 		<h2><?php echo $character->name; ?></h2>
 		<p><?php echo $character->description; ?></p>
 
@@ -31,7 +31,8 @@ else
 		<?php
 		foreach($character->comics->items as $comic)
 		{
-			?><a href="comic.php?id=<?php echo end(explode('/', $comic->resourceURI)); ?>" class="comic"><?php echo $comic->name; ?></a><br><?php
+			$idComic = explode('/', $comic->resourceURI);
+			?><a href="comic.php?id=<?php echo end($idComic); ?>" class="comic"><?php echo $comic->name; ?></a><br><?php
 		}
 	}
 }

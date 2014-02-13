@@ -71,7 +71,7 @@ class MarvelAPIInterface
 	public function getCharacterList($pageNumber=0, $resultsPerPage=20)
 	{
 		$data = Array('offset' => $pageNumber*$resultsPerPage, 'limit' => $resultsPerPage);
-		return $this->makeCall('http://gateway.marvel.com:80/v1/public/characters', $data, 'characters-'.$pageNumber.'x'.$resultsPerPage);
+		return $this->makeCall('http://gateway.marvel.com:80/v1/public/characters', $data, 'characters-page'.$pageNumber.'x'.$resultsPerPage);
 	}
 
 	// Get information about a specific Marvel character

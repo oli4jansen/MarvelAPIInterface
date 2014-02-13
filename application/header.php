@@ -22,7 +22,7 @@ if(!isset($page)) $page = 'Marvel API Interface';
 </head>
 <body>
 	<ul class="header-menu">
+		<li id="page-title"><?php echo $page; ?></li>
 		<li class="item" id="home"><a href="index.php">Home</a></li>
 		<li class="item" id="characters"><a href="characters.php">Characters</a></li>
-		<li id="page-title"><?php echo $page; ?></li>
-	</ul>
+	</ul><div class="content">

@@ -7,7 +7,7 @@
 }
 body {
 	background-color: #fff;
-	padding: 60px 50px 0;
+	padding: 0;
 	margin: 0;
 	color: #333;
 }
@@ -20,6 +20,11 @@ h1, h2, h3 {
 		text-decoration: none;
 		color: #333;
 	}
+table tr td {
+	padding: 10px 15px;
+	min-width: 150px;
+	vertical-align: top;
+}
 
 .button {
 	display: inline-block;
@@ -35,27 +40,20 @@ h1, h2, h3 {
 	}
 
 .header-menu {
-	display: block;
+	display: inline-block;
+	vertical-align: top;
+	width: 20%;
 	list-style: none;
 	padding: 10px 10px 0;
 	margin: 0;
 	background-color: #fff;
-	border-bottom: 1px solid #aaa;
-	position: fixed;
-	text-align: right;
-	top: 0;
-	left: 0;
-	width: 100%;
+	text-align: left;
 }
 	.header-menu li {
-		display: inline-block;
+		display: block;
 		margin: 0 0 -1px;
 		padding: 0;
 		border-bottom: 2px solid transparent;
-	}
-	.header-menu li.current,
-	.header-menu li:hover {
-		border-bottom: 2px solid #f0141e;
 	}
 	.header-menu li.current a,
 	.header-menu li a:hover {
@@ -68,16 +66,15 @@ h1, h2, h3 {
 			text-decoration: none;
 			padding: 15px 10px;
 		}
-	.header-menu .title {
-		float: left;
-	}
 
 #page-title {
-	text-transform: capitalize;
-	float: left;
-	color: #333;
-	padding: 15px 10px;
-	border-bottom: 2px solid transparent !important;
+	display: none;
+}
+
+.content {
+	width: 80%;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .pagination {
