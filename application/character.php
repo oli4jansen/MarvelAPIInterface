@@ -18,22 +18,44 @@ else
 	// Get the character information and put it into an array
 	$data = json_decode($API->getCharacter($id));
 	?>
-
-	<?php
-	foreach($data->data->results as $character)
-	{
-		?>
-		<img src="<?php echo $character->thumbnail->path.'.'.$character->thumbnail->extension; ?>" width="350">
-		<h2><?php echo $character->name; ?></h2>
-		<p><?php echo $character->description; ?></p>
-
-		Totaal aantal comics met <?php echo $character->name; ?>: <?php echo $character->comics->available; ?>.<br>
+	<table>
 		<?php
-		foreach($character->comics->items as $comic)
+		foreach($data->data->results as $character)
 		{
-			$idComic = explode('/', $comic->resourceURI);
-			?><a href="comic.php?id=<?php echo end($idComic); ?>" class="comic"><?php echo $comic->name; ?></a><br><?php
+			?>
+			<tr>
+				<td><b>Name</b></td>
+				<td><?php echo $character->name; ?></td>
+			</tr>
+			<tr>
+				<td><b>Description</b></td>
+				<td><?php echo $character->description; ?></td>
+			</tr>
+			<tr>
+				<td><b>Thumbnail</b></td>
+				<td><img src="<?php echo $character->thumbnail->path.'.'.$character->thumbnail->extension; ?>" width="300"></td>
+			</tr>
+			<tr>
+				<td><b># comics</b></td>
+				<td><?php echo $character->comics->available; ?></td>
+			</tr>
+
+			<?php
+			foreach($character->comics->items as $comic)
+			{
+				$idComic = explode('/', $comic->resourceURI);
+				?>
+				<tr>
+					<td></td>
+					<td>
+						<a href="comic.php?id=<?php echo end($idComic); ?>" class="comic"><?php echo $comic->name; ?></a>
+					</td>
+				</tr>
+				<?php
+			}
 		}
-	}
+		?>
+	</table>
+	<?php
 }
 ?>
